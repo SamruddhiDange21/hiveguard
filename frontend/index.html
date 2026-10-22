@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIVEGUARD — Intelligent Honeybee Colony Monitoring & Anomaly Detection</title>
+  <!-- Google Fonts & Chart.js -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Layout Wrapper -->
+  <div class="app-layout">
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">🐝</span>
+        <div class="brand-text">
+          <h2>HIVEGUARD</h2>
+          <span>IoT Colony AI</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard-view">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="#monitoring" class="nav-item" data-section="monitoring-view">
+          <span class="icon">📈</span> Hive Monitoring
+        </a>
+        <a href="#anomaly" class="nav-item" data-section="anomaly-view">
+          <span class="icon">🚨</span> Anomaly Detection
+        </a>
+        <a href="#comparison" class="nav-item" data-section="comparison-view">
+          <span class="icon">⚖️</span> Compare Hives
+        </a>
+        <a href="#insights" class="nav-item" data-section="insights-view">
+          <span class="icon">🧠</span> Model Insights
+        </a>
+        <a href="#simulator" class="nav-item" data-section="simulator-view">
+          <span class="icon">🧪</span> Sensor Simulator
+        </a>
+        <a href="#about" class="nav-item" data-section="about-view">
+          <span class="icon">ℹ️</span> About HIVEGUARD
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status">
+          <span class="pulse-dot"></span> System Online
+        </div>
+        <small>Apis cerana indica Telemetry</small>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-titles">
+          <h1>Bee Colony Intelligence</h1>
+          <p class="subtitle">Intelligent Honeybee Colony Monitoring & Anomaly Detection</p>
+        </div>
+
+        <div class="header-controls">
+          <div class="live-status-pill" id="live-indicator" style="display: none;">
+            <span class="live-dot"></span> LIVE ●
+          </div>
+
+          <button id="btn-toggle-live" class="btn btn-primary">
+            <span class="btn-icon">⚡</span> Start Live Monitoring
+          </button>
+
+          <div class="hive-picker">
+            <label for="hive-select">Select Hive:</label>
+            <select id="hive-select" class="form-select">
+              <option value="" disabled selected>Loading hives...</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scientific Disclaimer Banner -->
+      <div class="disclaimer-banner">
+        <strong>⚠️ Scientific & Veterinary Notice:</strong>
+        This prototype uses synthetic data for algorithm development. The predicted conditions are risk/anomaly categories and are not veterinary diagnoses. Real-world deployment requires validation using real <em>Apis cerana indica</em> colony data with verified health/event labels.
+      </div>
+
+      <!-- VIEW 1: DASHBOARD OVERVIEW -->
+      <section id="dashboard-view" class="content-section active">
+
+        <!-- Top 4 Sensor Cards -->
+        <div class="sensor-cards-grid">
+          <!-- Card 1: Temperature -->
+          <div class="sensor-card" id="card-temp">
+            <div class="card-header">
+              <span class="card-icon">🌡️</span>
+              <span class="card-title">Temperature</span>
+              <span class="status-indicator normal" id="temp-indicator">Normal</span>
+            </div>
+            <div class="card-value" id="val-temp">--.- <small>°C</small></div>
+            <div class="card-footer">
+              <span class="change-indicator" id="temp-change">Baseline: ~34.4 °C</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Humidity -->
+          <div class="sensor-card" id="card-humidity">
+            <div class="card-header">
+              <span class="card-icon">💧</span>
+              <span class="card-title">Humidity</span>
+              <span class="status-indicator normal" id="hum-indicator">Normal</span>
+            </div>
+            <div class="card-value" id="val-humidity">--.- <small>%</small></div>
+            <div class="card-footer">
+              <span class="change-indicator" id="hum-change">Baseline: ~58.3 %</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Weight -->
+          <div class="sensor-card" id="card-weight">
+            <div class="card-header">
+              <span class="card-icon">⚖️</span>
+              <span class="card-title">Hive Weight</span>
+              <span class="status-indicator normal" id="weight-indicator">Normal</span>
+            </div>
+            <div class="card-value" id="val-weight">--.- <small>kg</small></div>
+            <div class="card-footer">
+              <span class="change-indicator" id="weight-change">Gross Biomass</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Outside Temperature -->
+          <div class="sensor-card" id="card-outside">
+            <div class="card-header">
+              <span class="card-icon">⛅</span>
+              <span class="card-title">Outside Temp</span>
+              <span class="status-indicator neutral" id="outside-indicator">Ambient</span>
+            </div>
+            <div class="card-value" id="val-outside">--.- <small>°C</small></div>
+            <div class="card-footer">
+              <span class="change-indicator" id="temp-diff">Diff: --.- °C</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Health Status & Anomaly Alert Split -->
+        <div class="diagnostics-grid">
+          <!-- Large Health Status Card -->
+          <div class="diagnostic-card" id="health-status-card">
+            <div class="card-section-title">HIVE HEALTH STATUS</div>
+            <div class="health-state-banner normal" id="health-badge">
+              <span class="state-symbol" id="health-icon">🟢</span>
+              <span class="state-text" id="health-condition">HEALTHY</span>
+            </div>
+
+            <div class="health-metrics-row">
+              <div class="health-metric">
+                <span class="m-label">Risk Level:</span>
+                <span class="m-val risk-normal" id="val-risk-level">NORMAL</span>
+              </div>
+              <div class="health-metric">
+                <span class="m-label">Model Confidence:</span>
+                <span class="m-val" id="val-confidence">--%</span>
+              </div>
+              <div class="health-metric">
+                <span class="m-label">Anomaly Score:</span>
+                <span class="m-val" id="val-anomaly-score">-- / 100</span>
+              </div>
+            </div>
+
+            <div class="anomaly-meter-wrapper">
+              <div class="meter-bar">
+                <div class="meter-fill" id="anomaly-meter-fill" style="width: 10%;"></div>
+              </div>
+              <div class="meter-labels">
+                <span>0 Normal</span>
+                <span>20 Low</span>
+                <span>40 Moderate</span>
+                <span>60 High</span>
+                <span>80 Critical</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Anomaly Alert Card -->
+          <div class="diagnostic-card" id="anomaly-alert-card">
+            <div class="card-section-title">CURRENT ANOMALY ANALYSIS</div>
+            <div class="alert-content-box" id="alert-box">
+              <div class="alert-status-header" id="alert-header">
+                <span class="alert-tag normal" id="alert-tag">✓ Normal State</span>
+                <span class="alert-time" id="alert-timestamp">Just now</span>
+              </div>
+              <p class="alert-explanation-text" id="alert-explanation">
+                Analyzing colony sensor signals...
+              </p>
+              <div class="alert-recommendation" id="alert-recommendation">
+                <small><strong>Physical Inspection Protocol:</strong> Sensor patterns within healthy thermoregulatory ranges. No intervention needed.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Real-Time Charts Grid -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>🌡️ Temperature Over Time</h3>
+              <small>Brood nest temperature vs. ambient (°C)</small>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-temp"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>💧 Relative Humidity Over Time</h3>
+              <small>Internal relative humidity equilibrium (%)</small>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-humidity"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card full-width">
+            <div class="chart-header">
+              <h3>⚖️ Hive Gross Weight Over Time</h3>
+              <small>Biomass accumulation and depletion dynamics (kg)</small>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-weight"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anomaly Timeline Section -->
+        <div class="timeline-section">
+          <div class="section-title-bar">
+            <h3>🕒 ANOMALY TIMELINE</h3>
+            <small>Chronological log of detected microclimate states and risk transitions</small>
+          </div>
+          <div class="timeline-container" id="timeline-list">
+            <div class="timeline-empty">Loading historical telemetry events...</div>
+          </div>
+        </div>
+
+        <!-- Risk Types & Condition Interpretation Layer -->
+        <div class="reference-section">
+          <div class="reference-card">
+            <h4>🏷️ RISK SEVERITY CLASSIFICATION</h4>
+            <div class="risk-legend-grid">
+              <div class="legend-item"><span class="badge badge-normal">🟢 NORMAL</span> Healthy sensor pattern. Autonomous thermoregulation stable.</div>
+              <div class="legend-item"><span class="badge badge-low">🟡 LOW RISK</span> Small deviation from learned normal baseline.</div>
+              <div class="legend-item"><span class="badge badge-moderate">🟠 MODERATE RISK</span> Multiple sensor parameters drifting simultaneously.</div>
+              <div class="legend-item"><span class="badge badge-high">🔴 HIGH RISK</span> Strong abnormal pattern requiring apiary visit.</div>
+              <div class="legend-item"><span class="badge badge-sensor">⚫ SENSOR ANOMALY</span> Isolated hardware spike or probe malfunction.</div>
+            </div>
+          </div>
+
+          <div class="reference-card">
+            <h4>📖 CONDITION INTERPRETATION LAYER</h4>
+            <div class="conditions-grid">
+              <div class="cond-box">
+                <strong>HEALTHY</strong>
+                <p>Stable temperature (33.5–35.5°C), stable humidity (50–65%), gradual weight progression.</p>
+              </div>
+              <div class="cond-box">
+                <strong>COLONY STRESS</strong>
+                <p>Temperature deviation, persistent elevated humidity, progressive weight decline.</p>
+              </div>
+              <div class="cond-box">
+                <strong>SWARMING RISK</strong>
+                <p>Rapid biomass loss over short periods, ventilation and thermal pattern changes.</p>
+              </div>
+              <div class="cond-box">
+                <strong>VARROA RISK</strong>
+                <p><em>Possible Varroa-related risk pattern</em>: persistent microclimate depression and weight decline. (Not confirmed infection).</p>
+              </div>
+              <div class="cond-box">
+                <strong>SENSOR ANOMALY</strong>
+                <p>Abrupt impossible value in single sensor (e.g. temp &gt;41°C) with others stable.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- VIEW: HIVE MONITORING -->
+      <section id="monitoring-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>📈 HIVE MONITORING & TELEMETRY ANALYTICS</h2>
+          <p>Continuous sensor tracking, microclimate stability analysis, and live telemetry log for <span id="mon-colony-name" class="highlight-text">APIS_CERANA_INDIA_01</span></p>
+        </div>
+
+        <!-- Metric Summary Banner -->
+        <div class="monitoring-summary-grid">
+          <div class="mon-card">
+            <span class="mon-label">Internal Temperature</span>
+            <span class="mon-value" id="mon-val-temp">--.- °C</span>
+            <span class="mon-sub" id="mon-sub-temp">Target: 33.5 – 35.5 °C</span>
+          </div>
+          <div class="mon-card">
+            <span class="mon-label">Internal Humidity</span>
+            <span class="mon-value" id="mon-val-humidity">--.- %</span>
+            <span class="mon-sub" id="mon-sub-hum">Target: 50.0 – 65.0 %</span>
+          </div>
+          <div class="mon-card">
+            <span class="mon-label">Gross Hive Weight</span>
+            <span class="mon-value" id="mon-val-weight">--.- kg</span>
+            <span class="mon-sub" id="mon-sub-weight">Cumulative Δ: --.- kg</span>
+          </div>
+          <div class="mon-card">
+            <span class="mon-label">Thermal Gradient (ΔT)</span>
+            <span class="mon-value" id="mon-val-diff">--.- °C</span>
+            <span class="mon-sub" id="mon-sub-diff">Internal vs Ambient</span>
+          </div>
+        </div>
+
+        <!-- Monitoring Detailed Charts Grid -->
+        <div class="charts-grid">
+          <div class="chart-card full-width">
+            <div class="chart-header">
+              <h3>🌡️ High-Resolution Temperature Dynamics (°C)</h3>
+              <small>Brood nest microclimate regulation vs. ambient meteorological variations</small>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-mon-temp"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>💧 Relative Humidity Saturation Curve (%)</h3>
+              <small>Vapor equilibrium & ventilation efficacy</small>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-mon-hum"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>⚖️ Biomass & Foraging Rate-of-Change (kg)</h3>
+              <small>Biomass accumulation and diurnal nectar flow</small>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-mon-weight"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Telemetry Stream Table -->
+        <div class="telemetry-table-card">
+          <div class="card-header-flex">
+            <div>
+              <h3>📋 Continuous Sensor Telemetry Log</h3>
+              <small>Chronological sensor records logged at 30-minute intervals</small>
+            </div>
+            <span class="badge badge-normal" id="mon-telemetry-badge">Showing Recent Records</span>
+          </div>
+          <div class="table-responsive">
+            <table class="telemetry-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Internal Temp</th>
+                  <th>Humidity</th>
+                  <th>Gross Weight</th>
+                  <th>Outside Temp</th>
+                  <th>Thermal Diff</th>
+                  <th>Colony Condition</th>
+                  <th>Risk Status</th>
+                </tr>
+              </thead>
+              <tbody id="mon-telemetry-tbody">
+                <tr><td colspan="8" class="text-center">Loading telemetry stream...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: ANOMALY DETECTION -->
+      <section id="anomaly-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>🚨 ANOMALY DETECTION & RISK INCIDENT DISPATCH</h2>
+          <p>Real-time machine learning anomaly severity scoring (0–100), risk stratification, and automated beekeeper alerts</p>
+        </div>
+
+        <!-- Anomaly Severity Status Banner -->
+        <div class="anomaly-overview-banner" id="anomaly-overview-banner">
+          <div class="anomaly-score-gauge">
+            <div class="score-circle" id="anomaly-score-circle">
+              <span class="score-number" id="anomaly-circle-score">--</span>
+              <span class="score-max">/ 100</span>
+            </div>
+          </div>
+          <div class="anomaly-banner-details">
+            <div class="incident-badge-row">
+              <span class="badge badge-normal" id="anomaly-risk-badge">NORMAL</span>
+              <span class="incident-timestamp" id="anomaly-incident-time">Timestamp: Just now</span>
+            </div>
+            <h3 id="anomaly-headline">No Critical Anomalies Detected</h3>
+            <p id="anomaly-detailed-narrative">Analyzing multi-sensor microclimate trajectories across thermal, vapor, and biomass vectors...</p>
+          </div>
+        </div>
+
+        <!-- Anomaly Score Dynamics Timeline Chart -->
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>📈 Composite Anomaly Score Trajectory (0–100 Scale)</h3>
+            <small>Weighted blend of Random Forest class anomaly probabilities and standardized physical z-score deviations</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-anomaly-score-timeline"></canvas>
+          </div>
+        </div>
+
+        <!-- Active Anomaly Incident Feed -->
+        <div class="incidents-feed-section">
+          <div class="feed-header">
+            <div>
+              <h3>⚡ Detected Anomaly Events & Risk Dispatches</h3>
+              <small>Chronological dispatches triggering inspection recommendations</small>
+            </div>
+            <div class="feed-filters">
+              <button class="filter-btn active" id="btn-filter-all" data-filter="all">All Events</button>
+              <button class="filter-btn" id="btn-filter-alerts" data-filter="alerts">Risk & Alerts Only</button>
+            </div>
+          </div>
+          <div class="incident-cards-container" id="incident-cards-container">
+            <div class="empty-feed">Loading anomaly event logs...</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- VIEW 2: HIVE COMPARISON -->
+      <section id="comparison-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>COMPARE HIVES</h2>
+          <p>Side-by-side comparative analysis of multiple monitored colonies</p>
+        </div>
+
+        <div class="compare-selectors">
+          <div class="selector-group">
+            <label for="cmp-hive-1">Primary Colony:</label>
+            <select id="cmp-hive-1" class="form-select"></select>
+          </div>
+          <span class="vs-badge">VS</span>
+          <div class="selector-group">
+            <label for="cmp-hive-2">Comparison Colony:</label>
+            <select id="cmp-hive-2" class="form-select"></select>
+          </div>
+        </div>
+
+        <div class="compare-cards-grid">
+          <div class="compare-card" id="cmp-card-1">
+            <h3 id="cmp-title-1">Hive 1</h3>
+            <div class="cmp-metrics" id="cmp-metrics-1">Loading...</div>
+          </div>
+          <div class="compare-card" id="cmp-card-2">
+            <h3 id="cmp-title-2">Hive 2</h3>
+            <div class="cmp-metrics" id="cmp-metrics-2">Loading...</div>
+          </div>
+        </div>
+
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>Comparative Temperature Trajectory (°C)</h3>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-compare-temp"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: MODEL INSIGHTS -->
+      <section id="insights-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>MODEL INSIGHTS</h2>
+          <p>Supervised Machine Learning benchmarks and feature importance rankings</p>
+        </div>
+
+        <div class="model-metrics-grid">
+          <div class="model-card">
+            <span class="m-title">Best Model Architecture</span>
+            <span class="m-big" id="insights-model-name">Random Forest</span>
+            <small>Bagging Ensemble (100 Trees)</small>
+          </div>
+          <div class="model-card">
+            <span class="m-title">Test Accuracy</span>
+            <span class="m-big" id="insights-accuracy">99.9%</span>
+            <small>Time-Aware Split (2,000 samples)</small>
+          </div>
+          <div class="model-card">
+            <span class="m-title">Macro Precision</span>
+            <span class="m-big" id="insights-precision">99.9%</span>
+            <small>Zero class bias penalty</small>
+          </div>
+          <div class="model-card">
+            <span class="m-title">Macro Recall</span>
+            <span class="m-big" id="insights-recall">99.9%</span>
+            <small>Multi-class anomaly sensitivity</small>
+          </div>
+          <div class="model-card">
+            <span class="m-title">Macro F1-Score</span>
+            <span class="m-big text-green" id="insights-f1">0.9990</span>
+            <small>Primary selection metric</small>
+          </div>
+        </div>
+
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>FEATURE IMPORTANCE (Normalized Gini Importance)</h3>
+            <small>Ranked influence of telemetry features in predicting colony condition</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-feature-importance"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: SENSOR SIMULATOR -->
+      <section id="simulator-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>LIVE SENSOR SIMULATOR</h2>
+          <p>Manual testing laboratory: adjust sensor sliders and trigger real-time ML inference via <code>POST /api/predict</code></p>
+        </div>
+
+        <div class="simulator-layout">
+          <div class="sim-controls-card">
+            <h3>Input Sensor Parameters</h3>
+
+            <div class="sim-preset-row">
+              <label>Quick Scenarios:</label>
+              <select id="sim-preset-select" class="form-select">
+                <option value="custom">Custom Input</option>
+                <option value="healthy">Preset 1: Healthy Colony (34.4°C, 58%)</option>
+                <option value="stress">Preset 2: Colony Stress (32.2°C, 70%, -1.3kg)</option>
+                <option value="swarming">Preset 3: Swarming Event (-0.6kg drop)</option>
+                <option value="varroa">Preset 4: Varroa Risk Pattern (33.3°C, 65%)</option>
+                <option value="sensor">Preset 5: Sensor Spike (42.5°C jump)</option>
+              </select>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Internal Temperature (°C):</span>
+                <strong id="sim-val-temp">34.4</strong>
+              </div>
+              <input type="range" id="sim-input-temp" min="25.0" max="45.0" step="0.1" value="34.4">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Relative Humidity (%):</span>
+                <strong id="sim-val-humidity">58.0</strong>
+              </div>
+              <input type="range" id="sim-input-humidity" min="30.0" max="95.0" step="0.5" value="58.0">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Gross Hive Weight (kg):</span>
+                <strong id="sim-val-weight">36.5</strong>
+              </div>
+              <input type="range" id="sim-input-weight" min="28.0" max="45.0" step="0.1" value="36.5">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Outside Ambient Temp (°C):</span>
+                <strong id="sim-val-outside">25.0</strong>
+              </div>
+              <input type="range" id="sim-input-outside" min="15.0" max="42.0" step="0.1" value="25.0">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Weight Change from Baseline (kg):</span>
+                <strong id="sim-val-wt-chg">+0.15</strong>
+              </div>
+              <input type="range" id="sim-input-wt-chg" min="-3.0" max="2.0" step="0.05" value="0.15">
+            </div>
+
+            <button id="btn-run-sim" class="btn btn-primary btn-block">
+              🚀 Run Model Inference (POST /api/predict)
+            </button>
+          </div>
+
+          <div class="sim-result-card">
+            <h3>Prediction Response</h3>
+            <div id="sim-output-box" class="sim-output-box">
+              <div class="sim-result-header">
+                <span class="sim-cond-pill normal" id="sim-res-cond">Healthy</span>
+                <span class="sim-risk-pill" id="sim-res-risk">NORMAL</span>
+              </div>
+              <div class="sim-metrics-grid">
+                <div><span>Confidence:</span> <strong id="sim-res-conf">99.0%</strong></div>
+                <div><span>Anomaly Score:</span> <strong id="sim-res-score">7.3 / 100</strong></div>
+              </div>
+              <div class="sim-explanation-box">
+                <h4>Automated Diagnostic Explanation:</h4>
+                <p id="sim-res-exp">Normal Status: All parameters within learned baseline.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 5: ABOUT -->
+      <section id="about-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>ABOUT HIVEGUARD</h2>
+          <p>Precision Apiculture IoT & Anomaly Prediction System</p>
+        </div>
+        <div class="about-card">
+          <p><strong>HIVEGUARD</strong> is an autonomous apiary monitoring system designed to protect <em>Apis cerana indica</em> colonies through continuous sensor telemetry and machine learning.</p>
+          <h4>Target Anomaly Categories:</h4>
+          <ul>
+            <li><strong>Healthy:</strong> Optimal autonomous brood nest thermoregulation (~34.4°C).</li>
+            <li><strong>Colony Stress:</strong> Synchronous thermal and humidity deviations with biomass decline.</li>
+            <li><strong>Swarming Risk:</strong> Sudden biomass reduction signaling colony division.</li>
+            <li><strong>Varroa Risk:</strong> Chronic microclimate depression requiring physical sticky-board washes.</li>
+            <li><strong>Sensor Anomaly:</strong> Isolated hardware probe errors.</li>
+          </ul>
+          <h4>Technical Stack:</h4>
+          <p><strong>Backend:</strong> Flask (Python 3.10+), scikit-learn, XGBoost, pandas, NumPy.<br>
+          <strong>Frontend:</strong> HTML5, CSS3, Vanilla JavaScript, Chart.js.<br>
+          <strong>Communication:</strong> REST API JSON endpoints.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
