@@ -21,11 +21,13 @@ from src.config import (
 from src.preprocessing import clean_data, load_data
 from src.feature_engineering import compute_hive_features
 from src.predict import get_model_payload, predict_hive_status, predict_dataframe
+from src.research.routes import research_bp
 
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
 
 app = Flask(__name__, static_folder=str(FRONTEND_DIR), static_url_path="")
 CORS(app)
+app.register_blueprint(research_bp)
 
 # Global dataset & predictions cache
 _DF_CACHE = None
@@ -245,6 +247,8 @@ def get_model_insights():
             "recall": round(float(best_row["Recall"]), 4),
             "macro_f1": round(float(best_row["Macro F1"]), 4),
             "feature_importance": fi_list,
+            "is_legacy_demo": True,
+            "provenance_notice": "Trained on synthetic prototype data with separable class clusters. Metrics represent an unverified legacy demonstration value, not clinical diagnosis.",
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500

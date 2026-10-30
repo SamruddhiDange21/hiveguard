@@ -1,0 +1,13 @@
+experiment_id,timestamp,dataset_id,dataset_provenance,algorithm_name,precision,recall,f1_score,far_per_24h,detection_delay_minutes,runtime_ms,parameters,software_version
+EXP_20261029_235532_499,2026-10-29 23:55:32,mspb_research_telemetry,Recorded Public Research Data,Method C (Proposed Framework),0.0026,1.0,0.0052,72.96,0.0,89.22,"{""z_threshold"": 2.2}",2.0.0-research
+EXP_20261029_235751_461,2026-10-29 23:57:51,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_001155_951,2026-10-30 00:11:55,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_001445_616,2026-10-30 00:14:45,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_001952_358,2026-10-30 00:19:52,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_002150_301,2026-10-30 00:21:50,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_002421_600,2026-10-30 00:24:21,mspb_research_telemetry,Recorded Public Research Data,"Method C (Context, Reliability & Persistence)",0.2,1.0,0.3333,0.77,0,84.24,"{""scenario_type"": ""isolated_spike"", ""severity"": 12, ""seed"": 42, ""z_threshold"": 2.2, ""persistence_steps"": 4}",2.0.0-research
+EXP_20261030_052213_232,2026-10-30 05:22:13,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_052225_612,2026-10-30 05:22:25,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_103842_946,2026-10-30 10:38:42,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_104426_689,2026-10-30 10:44:26,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research
+EXP_20261030_104700_301,2026-10-30 10:47:00,test_suite_run,Recorded Public Research Data,Method C Unit Test,1.0,1.0,1.0,N/A,N/A,N/A,"{""z_thresh"": 2.2}",2.0.0-research

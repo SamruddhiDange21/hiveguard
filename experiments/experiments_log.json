@@ -1,0 +1,271 @@
+[
+  {
+    "experiment_id": "EXP_20261029_235532_499",
+    "timestamp": "2026-10-29 23:55:32",
+    "dataset_id": "mspb_research_telemetry",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C (Proposed Framework)",
+    "parameters": {
+      "z_threshold": 2.2
+    },
+    "metrics": {
+      "available": true,
+      "precision": 0.0026,
+      "recall": 1.0,
+      "f1_score": 0.0052,
+      "true_positives": 1,
+      "false_positives": 380,
+      "true_negatives": 119,
+      "false_negatives": 0,
+      "confusion_matrix": [
+        [
+          119,
+          380
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "far_per_24h": 72.96,
+      "detection_delay_steps": 0.0,
+      "detection_delay_minutes": 0.0,
+      "runtime_ms": 89.22
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261029_235751_461",
+    "timestamp": "2026-10-29 23:57:51",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_001155_951",
+    "timestamp": "2026-10-30 00:11:55",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_001445_616",
+    "timestamp": "2026-10-30 00:14:45",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_001952_358",
+    "timestamp": "2026-10-30 00:19:52",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_002150_301",
+    "timestamp": "2026-10-30 00:21:50",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_002421_600",
+    "timestamp": "2026-10-30 00:24:21",
+    "dataset_id": "mspb_research_telemetry",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C (Context, Reliability & Persistence)",
+    "parameters": {
+      "scenario_type": "isolated_spike",
+      "severity": 12,
+      "seed": 42,
+      "z_threshold": 2.2,
+      "persistence_steps": 4
+    },
+    "metrics": {
+      "available": true,
+      "confusion_matrix": [
+        [
+          495,
+          4
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "detection_delay_minutes": 0,
+      "detection_delay_steps": 0,
+      "f1_score": 0.3333,
+      "false_negatives": 0,
+      "false_positives": 4,
+      "far_per_24h": 0.77,
+      "precision": 0.2,
+      "recall": 1,
+      "runtime_ms": 84.24,
+      "true_negatives": 495,
+      "true_positives": 1
+    },
+    "scenario_details": {
+      "channel": "temperature_C",
+      "description": "Controlled isolated_spike fault injected on 'temperature_C' from step 150 to 151 (severity: 12.0).",
+      "duration_steps": 1,
+      "fault_timesteps": 1,
+      "random_seed": 42,
+      "scenario_category": "sensor_fault",
+      "scenario_type": "isolated_spike",
+      "severity": 12,
+      "start_index": 150,
+      "total_timesteps": 500
+    },
+    "notes": "Benchmarked on Controlled isolated_spike fault injected on 'temperature_C' from step 150 to 151 (severity: 12.0).",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_052213_232",
+    "timestamp": "2026-10-30 05:22:13",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_052225_612",
+    "timestamp": "2026-10-30 05:22:25",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_103842_946",
+    "timestamp": "2026-10-30 10:38:42",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_104426_689",
+    "timestamp": "2026-10-30 10:44:26",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  },
+  {
+    "experiment_id": "EXP_20261030_104700_301",
+    "timestamp": "2026-10-30 10:47:00",
+    "dataset_id": "test_suite_run",
+    "dataset_provenance": "Recorded Public Research Data",
+    "algorithm_name": "Method C Unit Test",
+    "parameters": {
+      "z_thresh": 2.2
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "scenario_details": {},
+    "notes": "",
+    "software_version": "2.0.0-research"
+  }
+]

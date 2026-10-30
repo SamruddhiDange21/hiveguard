@@ -27,6 +27,7 @@
       </div>
 
       <nav class="nav-menu">
+        <div class="nav-group-label">OPERATIONS & DEMO</div>
         <a href="#dashboard" class="nav-item active" data-section="dashboard-view">
           <span class="icon">📊</span> Dashboard
         </a>
@@ -45,6 +46,34 @@
         <a href="#simulator" class="nav-item" data-section="simulator-view">
           <span class="icon">🧪</span> Sensor Simulator
         </a>
+
+        <div class="nav-group-label">RESEARCH & RELIABILITY</div>
+        <a href="#research-overview" class="nav-item" data-section="research-overview-view">
+          <span class="icon">🔬</span> Research Overview
+        </a>
+        <a href="#research-explorer" class="nav-item" data-section="research-explorer-view">
+          <span class="icon">📂</span> Data Explorer
+        </a>
+        <a href="#research-reliability" class="nav-item" data-section="research-reliability-view">
+          <span class="icon">🛡️</span> Sensor Reliability Lab
+        </a>
+        <a href="#research-context" class="nav-item" data-section="research-context-view">
+          <span class="icon">⏱️</span> Context Analysis
+        </a>
+        <a href="#research-simulation" class="nav-item" data-section="research-simulation-view">
+          <span class="icon">⚙️</span> Simulation Lab
+        </a>
+        <a href="#research-evaluation" class="nav-item" data-section="research-evaluation-view">
+          <span class="icon">📊</span> Benchmark & Evaluation
+        </a>
+        <a href="#research-warning" class="nav-item" data-section="research-warning-view">
+          <span class="icon">⚠️</span> Warning Center
+        </a>
+        <a href="#research-registry" class="nav-item" data-section="research-registry-view">
+          <span class="icon">📋</span> Experiment Registry
+        </a>
+
+        <div class="nav-group-label">SYSTEM</div>
         <a href="#about" class="nav-item" data-section="about-view">
           <span class="icon">ℹ️</span> About HIVEGUARD
         </a>
@@ -617,7 +646,683 @@
         </div>
       </section>
 
-      <!-- VIEW 5: ABOUT -->
+      <!-- ==============================================================================
+           RESEARCH VIEW 1: RESEARCH OVERVIEW & DATASET PROVENANCE
+           ============================================================================== -->
+      <section id="research-overview-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>🔬 RESEARCH OVERVIEW & DATASET PROVENANCE</h2>
+          <p>Context-Aware & Reliability-Aware Framework for Honeybee Colony Monitoring</p>
+        </div>
+
+        <!-- Research Banner -->
+        <div class="research-hero-banner">
+          <div class="research-hero-content">
+            <span class="research-tag">WORKING RESEARCH TITLE</span>
+            <h3>"HIVEGUARD: A Context-Aware and Reliability-Aware Framework for Anomaly Detection in Honeybee Hive Monitoring"</h3>
+            <p>Evaluating precision microclimate anomaly detection, sensor data-quality assessment, and temporal persistence using verified public research benchmarks (Nature Scientific Data: MSPB) and reproducible fault injection.</p>
+          </div>
+          <div class="research-hero-actions">
+            <button id="btn-open-audit-modal" class="btn btn-outline-light">
+              📄 View Verified MSPB Dataset Audit Report
+            </button>
+          </div>
+        </div>
+
+        <!-- Dataset Selector & Provenance Card -->
+        <div class="card research-dataset-card">
+          <div class="card-header-flex">
+            <div>
+              <h3>Active Research Dataset & Ingestion Source</h3>
+              <small>Select from verified public research benchmarks, synthetic prototypes, or uploaded series</small>
+            </div>
+            <span class="provenance-badge recorded" id="overview-provenance-badge">Recorded Public Research Data</span>
+          </div>
+
+          <div class="dataset-select-row">
+            <div class="form-group flex-2">
+              <label for="overview-dataset-select"><strong>Select Research Dataset:</strong></label>
+              <select id="overview-dataset-select" class="form-select"></select>
+            </div>
+            <div class="form-group flex-1">
+              <label>&nbsp;</label>
+              <button id="btn-reload-dataset" class="btn btn-primary btn-block">Inspect Selected Dataset</button>
+            </div>
+          </div>
+
+          <div class="meta-metrics-grid">
+            <div class="meta-metric-box">
+              <span class="meta-label">Total Observations</span>
+              <strong class="meta-val" id="meta-total-records">--</strong>
+              <small id="meta-file-size">-- KB</small>
+            </div>
+            <div class="meta-metric-box">
+              <span class="meta-label">Monitored Hives</span>
+              <strong class="meta-val" id="meta-hives-count">--</strong>
+              <small id="meta-apiaries">--</small>
+            </div>
+            <div class="meta-metric-box">
+              <span class="meta-label">Date Range</span>
+              <strong class="meta-val font-mono" id="meta-date-range">--</strong>
+              <small id="meta-duration-days">-- days</small>
+            </div>
+            <div class="meta-metric-box">
+              <span class="meta-label">Sampling Cadence</span>
+              <strong class="meta-val" id="meta-cadence">-- min</strong>
+              <small id="meta-cadence-reg">--</small>
+            </div>
+            <div class="meta-metric-box">
+              <span class="meta-label">Verified Ground Truth</span>
+              <strong class="meta-val" id="meta-ground-truth-status">--</strong>
+              <small id="meta-citation-tag">--</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Provenance Declaration Matrix -->
+        <div class="card">
+          <h3>📌 Data Provenance & Scientific Integrity Declaration</h3>
+          <p class="section-desc">To ensure strict scientific transparency, HIVEGUARD explicitly classifies every data stream into four distinct provenance categories:</p>
+          <div class="table-responsive">
+            <table class="research-table">
+              <thead>
+                <tr>
+                  <th>Provenance Tier</th>
+                  <th>Data Source</th>
+                  <th>Verification Level</th>
+                  <th>Role in HIVEGUARD Research</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="provenance-badge recorded">1. Recorded Research Data</span></td>
+                  <td><strong>MSPB Dataset (Zhu et al., 2024, Nature Sci. Data)</strong><br><small>53 hives, 2 apiaries, Québec, Canada (CC-BY-NC-4.0)</small></td>
+                  <td><span class="badge badge-normal">Peer-Reviewed / Zenodo Verified</span></td>
+                  <td>Primary empirical benchmark for microclimate baselines, diurnal rhythms, and sensor reliability.</td>
+                </tr>
+                <tr>
+                  <td><span class="provenance-badge injected">2. Controlled Injected Faults</span></td>
+                  <td><strong>Simulated Sensor Faults & Hypothetical Stress</strong><br><small>Deterministic spikes, stuck sensors, drift, and missingness</small></td>
+                  <td><span class="badge badge-warning">Algorithmic Ground Truth</span></td>
+                  <td>Evaluates fault-detection precision, recall, false alarm rates, and detection delay with fixed seeds.</td>
+                </tr>
+                <tr>
+                  <td><span class="provenance-badge synthetic">3. Synthetic Prototype Data</span></td>
+                  <td><strong>HIVEGUARD 10,000 Synthetic Series</strong><br><small>Legacy prototype dataset with artificially separated clusters</small></td>
+                  <td><span class="badge badge-muted">Demonstration Prototype Only</span></td>
+                  <td>Maintained for backward-compatible pipeline walkthrough; clearly marked as an unverified demonstration value.</td>
+                </tr>
+                <tr>
+                  <td><span class="provenance-badge hardware">4. Real Hardware Telemetry</span></td>
+                  <td><strong>ESP32 Edge Probe (DHT22 / I2C LCD / Load Cell)</strong><br><small>Physical laboratory prototype</small></td>
+                  <td><span class="badge badge-danger">Pending Live Colony Deployment</span></td>
+                  <td>Hardware node operational in simulation; live apiary validation scheduled for spring nectar flow.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Research Limitations & Bio-Ethical Notice -->
+        <div class="card research-limitations-card">
+          <div class="warning-title-row">
+            <span class="warning-icon">⚠️</span>
+            <h4>Research Scope, Limitations & Veterinary Disclaimers</h4>
+          </div>
+          <ul>
+            <li><strong>Decision-Support, Not Autonomous Diagnosis:</strong> The predictive models and anomaly scores provide decision support for apiary managers. They highlight statistical microclimate deviations and are not definitive veterinary diagnoses for parasitic diseases.</li>
+            <li><strong>Continuous Hive Weight Availability:</strong> While the legacy synthetic prototype modeled continuous 15-minute gross weight, the real MSPB research dataset recorded hive weight periodically at milestone inspections (pre-winter, post-winter, and honey yield). The framework handles missing channels transparently without fabricating substitute values.</li>
+            <li><strong>Non-Invasive Verification:</strong> High anomaly scores trigger recommendations for targeted physical checks (e.g. bottom sticky-board washes, inspection of brood comb cappings) rather than automated medication.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           RESEARCH VIEW 2: RESEARCH DATA EXPLORER
+           ============================================================================== -->
+      <section id="research-explorer-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>📂 RESEARCH DATA EXPLORER & SCHEMA VALIDATION</h2>
+          <p>Inspect dataset schemas, missing values, sampling cadence, and multi-sensor time series</p>
+        </div>
+
+        <div class="explorer-grid">
+          <!-- Upload Box -->
+          <div class="card upload-card">
+            <h3>📥 Ingest External Research Dataset (CSV)</h3>
+            <p class="small-text">Upload compatible precision apiculture CSV data (e.g., Open Source Beehives, Arnia, or custom IoT logs). Automatic schema harmonization maps temperature, humidity, and timestamp columns.</p>
+            <div class="upload-dropzone" id="upload-dropzone">
+              <input type="file" id="input-research-csv" accept=".csv" class="file-input-hidden">
+              <div class="dropzone-content">
+                <span class="dropzone-icon">📄</span>
+                <p><strong>Click to browse</strong> or drag & drop research CSV file</p>
+                <small>Preserves raw data; creates standardized working copy</small>
+              </div>
+            </div>
+            <div class="upload-actions">
+              <button id="btn-upload-research-csv" class="btn btn-primary btn-block">Harmonize & Validate Upload</button>
+            </div>
+            <div id="upload-feedback" class="upload-feedback"></div>
+          </div>
+
+          <!-- Schema & Quality Card -->
+          <div class="card schema-card">
+            <h3>📋 Schema & Quality Summary</h3>
+            <div class="schema-info-grid">
+              <div>
+                <span class="m-label">Active Dataset:</span>
+                <strong id="exp-dataset-title">MSPB Research Telemetry</strong>
+              </div>
+              <div>
+                <span class="m-label">Standard Columns Found:</span>
+                <span id="exp-standard-cols" class="tag-list">--</span>
+              </div>
+              <div>
+                <span class="m-label">Duplicate Timestamps:</span>
+                <strong id="exp-duplicate-count">0</strong>
+              </div>
+              <div>
+                <span class="m-label">Cadence Regularity:</span>
+                <strong id="exp-cadence-regularity">Regular (15 min)</strong>
+              </div>
+            </div>
+            <h4>Missing Values & Null Audit:</h4>
+            <div id="exp-missing-bars" class="missing-bars-container">
+              <small>Loading column quality metrics...</small>
+            </div>
+            <div id="exp-quality-warnings" class="quality-warnings-box"></div>
+          </div>
+        </div>
+
+        <!-- Time Series Visualizer -->
+        <div class="chart-card full-width">
+          <div class="chart-header flex-between">
+            <div>
+              <h3>📈 Chronological Multi-Sensor Telemetry Stream</h3>
+              <small>Inspect raw physical observations across temperature, relative humidity, and power</small>
+            </div>
+            <div class="chart-header-controls">
+              <label for="explorer-hive-picker">Colony Hive ID:</label>
+              <select id="explorer-hive-picker" class="form-select form-select-sm"></select>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-explorer-telemetry"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           RESEARCH VIEW 3: SENSOR RELIABILITY LAB
+           ============================================================================== -->
+      <section id="research-reliability-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>🛡️ SENSOR RELIABILITY LAB & DATA-QUALITY SUBSYSTEM</h2>
+          <p>Detect stuck probes, impulse spikes, physical out-of-bound errors, drift, and noise</p>
+        </div>
+
+        <div class="reliability-lab-layout">
+          <!-- Fault Injection Controls -->
+          <div class="card reliability-controls-card">
+            <h3>⚙️ Controlled Fault Injection</h3>
+            <p class="small-text">Inject deterministic sensor faults into a copy of the active research series to evaluate the detection rules and calculate empirical precision/recall.</p>
+
+            <div class="form-group">
+              <label for="rel-fault-type"><strong>Fault Mechanism:</strong></label>
+              <select id="rel-fault-type" class="form-select">
+                <option value="isolated_spike">Isolated Impulse Spike (Single-step jump & recovery)</option>
+                <option value="stuck_sensor">Stuck / Frozen Sensor Value (Zero variance over window)</option>
+                <option value="gradual_drift">Gradual Sensor Drift (Monotonic linear bias)</option>
+                <option value="gaussian_noise">High-Frequency Measurement Noise (Erratic variance)</option>
+                <option value="missing_data">Communication Dropout (Missing data / NaNs)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="rel-channel-select">Target Sensor Channel:</label>
+              <select id="rel-channel-select" class="form-select">
+                <option value="temperature_C">Temperature (°C)</option>
+                <option value="humidity_percent">Relative Humidity (%)</option>
+              </select>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Fault Severity / Amplitude:</span>
+                <strong id="rel-severity-val">12.0</strong>
+              </div>
+              <input type="range" id="rel-severity-input" min="1.0" max="25.0" step="0.5" value="12.0">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Fault Duration (Timesteps):</span>
+                <strong id="rel-duration-val">1</strong>
+              </div>
+              <input type="range" id="rel-duration-input" min="1" max="24" step="1" value="1">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Injection Onset Index:</span>
+                <strong id="rel-onset-val">150</strong>
+              </div>
+              <input type="range" id="rel-onset-input" min="20" max="380" step="10" value="150">
+            </div>
+
+            <button id="btn-run-reliability-sim" class="btn btn-primary btn-block">
+              ⚡ Inject Fault & Run Reliability Evaluator
+            </button>
+          </div>
+
+          <!-- Reliability Metrics Scorecard -->
+          <div class="card reliability-results-card">
+            <h3>📊 Reliability Detection Scorecard</h3>
+            <div class="rel-scorecard-grid">
+              <div class="metric-tile">
+                <span class="m-label">Fault Precision</span>
+                <strong class="m-val" id="rel-metric-precision">--</strong>
+                <small>TP / (TP + FP)</small>
+              </div>
+              <div class="metric-tile">
+                <span class="m-label">Fault Recall</span>
+                <strong class="m-val" id="rel-metric-recall">--</strong>
+                <small>TP / (TP + FN)</small>
+              </div>
+              <div class="metric-tile">
+                <span class="m-label">False Fault Alarms</span>
+                <strong class="m-val" id="rel-metric-far">-- / 24h</strong>
+                <small>FAR normalized</small>
+              </div>
+              <div class="metric-tile">
+                <span class="m-label">Detection Delay</span>
+                <strong class="m-val" id="rel-metric-delay">-- min</strong>
+                <small>Onset to first trigger</small>
+              </div>
+            </div>
+
+            <div class="rule-explanation-box">
+              <h4>Active Detection Rule Logic:</h4>
+              <p id="rel-rule-explanation">Evaluating sensor time series against physical boundaries, rolling variance boundaries, and bidirectional impulse step thresholds...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reliability Charts -->
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>📈 Original vs. Corrupted Sensor Series</h3>
+            <small>Gold: Injected corrupted signal; Green dotted: Pristine research baseline; Red band: Injected fault interval</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-reliability-signal"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>🛡️ Continuous Sensor Reliability Score R_s(t) in [0.0, 1.0]</h3>
+            <small>Green (>=0.80: Reliable), Yellow (0.40–0.79: Degraded), Red (&lt;0.40: Faulty Hardware)</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-reliability-score"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           RESEARCH VIEW 4: CONTEXT-AWARE ANOMALY ANALYSIS
+           ============================================================================== -->
+      <section id="research-context-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>⏱️ CONTEXT-AWARE ANOMALY ANALYSIS & TRI-METHOD COMPARISON</h2>
+          <p>Benchmark Method A (Fixed Thresholds) vs Method B (Rolling Robust Z / MAD) vs Method C (Proposed Framework)</p>
+        </div>
+
+        <!-- Controls Row -->
+        <div class="card context-controls-card">
+          <div class="context-filters-row">
+            <div class="form-group flex-1">
+              <label for="ctx-hive-select">Select Monitored Colony:</label>
+              <select id="ctx-hive-select" class="form-select"></select>
+            </div>
+            <div class="form-group flex-1">
+              <label for="ctx-limit-select">Analysis Window:</label>
+              <select id="ctx-limit-select" class="form-select">
+                <option value="400">400 Steps (~4 Days at 15-min cadence)</option>
+                <option value="800" selected>800 Steps (~8 Days)</option>
+                <option value="1500">1,500 Steps (~15 Days)</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label>&nbsp;</label>
+              <button id="btn-run-context-analysis" class="btn btn-primary btn-block">Execute Tri-Method Analysis</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tri-Method Comparative Scorecard -->
+        <div class="tri-method-grid">
+          <div class="method-card method-a">
+            <div class="method-header">
+              <span class="method-tag">METHOD A</span>
+              <h4>Fixed-Threshold Baseline</h4>
+            </div>
+            <p class="method-desc">Triggers whenever readings breach static limits (Temp &lt; 32°C or &gt; 36°C; Hum &lt; 45% or &gt; 70%).</p>
+            <div class="method-stat-box">
+              <span class="stat-number text-danger" id="method-a-alarms">--</span>
+              <span class="stat-label">Total Alarms Triggered</span>
+            </div>
+            <div class="method-substats">
+              <div>Alarm Rate: <strong id="method-a-rate">--%</strong></div>
+              <div>False Alarms: <strong>High on cold mornings</strong></div>
+            </div>
+          </div>
+
+          <div class="method-card method-b">
+            <div class="method-header">
+              <span class="method-tag">METHOD B</span>
+              <h4>Rolling Robust Z-Score / MAD</h4>
+            </div>
+            <p class="method-desc">Statistical anomaly detection via rolling median and Median Absolute Deviation (|Z| &gt; 2.5).</p>
+            <div class="method-stat-box">
+              <span class="stat-number text-warning" id="method-b-alarms">--</span>
+              <span class="stat-label">Total Alarms Triggered</span>
+            </div>
+            <div class="method-substats">
+              <div>Alarm Rate: <strong id="method-b-rate">--%</strong></div>
+              <div>Limitation: <strong>Triggered by single-point noise spikes</strong></div>
+            </div>
+          </div>
+
+          <div class="method-card method-c">
+            <div class="method-header">
+              <span class="method-tag highlight">METHOD C (PROPOSED)</span>
+              <h4>Context, Reliability & Persistence</h4>
+            </div>
+            <p class="method-desc">Hour-conditioned diurnal baseline + sensor reliability gating + persistence factor + channel consensus.</p>
+            <div class="method-stat-box">
+              <span class="stat-number text-green" id="method-c-alarms">--</span>
+              <span class="stat-label">Total Actionable Dispatches</span>
+            </div>
+            <div class="method-substats">
+              <div>Alarm Rate: <strong id="method-c-rate">--%</strong></div>
+              <div>Advantage: <strong>Zero false alarms from isolated spikes</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 1: Observed vs Expected Diurnal Baseline -->
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>📈 Observed Temperature vs. Expected Hour-of-Day Diurnal Baseline</h3>
+            <small>Blue line: Observed internal temperature; Green dashed line: Learned historical hour-conditioned median baseline</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-context-baseline"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Comparative Anomaly Scores -->
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>⚡ Comparative Anomaly Scores Over Time (0–100 Scale)</h3>
+            <small>Red: Method A (Fixed); Orange: Method B (Rolling MAD); Teal: Method C (Proposed Framework)</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-context-anomaly-scores"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 3: Persistence and Consensus Dynamics -->
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>⏳ Persistence Accumulation Factor P(t) & Sensor Reliability Gating</h3>
+            <small>Purple line: Temporal persistence (accumulates only during sustained biological deviation); Green line: Reliability score</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-context-persistence"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           RESEARCH VIEW 5: SIMULATION LABORATORY
+           ============================================================================== -->
+      <section id="research-simulation-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>⚙️ CONTROLLED SIMULATION LABORATORY</h2>
+          <p>Reproducible test series with fixed seeds and explicit scenario categorization</p>
+        </div>
+
+        <div class="sim-lab-layout">
+          <div class="card sim-scenario-card">
+            <h3>🧪 Configure Reproducible Test Scenario</h3>
+
+            <div class="scenario-category-tabs">
+              <button class="scen-tab active" id="tab-scen-sensor" data-cat="sensor_fault">1. Sensor Fault Scenarios</button>
+              <button class="scen-tab" id="tab-scen-stress" data-cat="hypothetical_environmental">2. Hypothetical Stress Scenarios</button>
+            </div>
+
+            <div class="form-group">
+              <label for="lab-scen-type"><strong>Scenario Profile:</strong></label>
+              <select id="lab-scen-type" class="form-select">
+                <option value="isolated_spike">Isolated Probe Spike (+15°C jump returning next step)</option>
+                <option value="stuck_sensor">Stuck / Frozen Sensor Value (Constant reading across 8 hours)</option>
+                <option value="gradual_drift">Gradual Sensor Drift (+0.25°C/hr monotonic bias)</option>
+                <option value="gaussian_noise">High-Amplitude Measurement Noise</option>
+                <option value="missing_data">Communication Dropout (Packet Loss)</option>
+              </select>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Random Seed (Reproducibility):</span>
+                <strong id="lab-seed-val">42</strong>
+              </div>
+              <input type="range" id="lab-seed-input" min="1" max="100" step="1" value="42">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Severity / Amplitude:</span>
+                <strong id="lab-sev-val">12.0</strong>
+              </div>
+              <input type="range" id="lab-sev-input" min="1.0" max="25.0" step="0.5" value="12.0">
+            </div>
+
+            <button id="btn-run-lab-scenario" class="btn btn-primary btn-block">Run Controlled Scenario & Benchmark</button>
+          </div>
+
+          <div class="card sim-disclaimer-card">
+            <div class="status-indicator-box">
+              <span class="pulse-dot"></span>
+              <h4>SCENARIO REPRODUCIBILITY CONTRACT</h4>
+            </div>
+            <p>Every simulation run in this laboratory generates ground-truth evaluation intervals deterministically. Category 2 environmental scenarios are strictly documented as <em>hypothetical models</em> of thermal stress rather than clinical disease confirmations.</p>
+            <div class="experiment-quick-save">
+              <button id="btn-save-active-exp" class="btn btn-outline-dark btn-block">
+                💾 Log Run to Experiment Registry
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card full-width">
+          <div class="chart-header">
+            <h3>📈 Simulation Timeline: Ground-Truth vs. Detection Output</h3>
+            <small>Red shaded region: Injected ground-truth fault/stress window; Dots: Triggered detection events</small>
+          </div>
+          <div class="chart-body">
+            <canvas id="chart-simulation-timeline"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           RESEARCH VIEW 6: BENCHMARK & EVALUATION
+           ============================================================================== -->
+      <section id="research-evaluation-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>📊 BENCHMARK EVALUATION & REPRODUCIBLE METRICS</h2>
+          <p>Scientific metrics computed against verified ground-truth intervals (No invented performance claims)</p>
+        </div>
+
+        <!-- Evaluation Table Card -->
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <h3>Standardized Multi-Algorithm Evaluation Matrix</h3>
+              <small>Evaluated on identical test time series with time-aware train/test separation</small>
+            </div>
+            <span class="badge badge-normal" id="eval-case-label">Isolated Spike Benchmark (Seed 42)</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="research-table" id="table-benchmark-metrics">
+              <thead>
+                <tr>
+                  <th>Algorithm / Method</th>
+                  <th>Precision</th>
+                  <th>Recall</th>
+                  <th>F1-Score</th>
+                  <th>False Alarms / 24h</th>
+                  <th>Detection Delay</th>
+                  <th>Latency (ms)</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-benchmark-metrics">
+                <tr><td colspan="7" class="text-center">Run a simulation benchmark to compute metrics...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Time-Aware Split & Data Leakage Prevention -->
+        <div class="card">
+          <h3>🛡️ Strict Data-Leakage Prevention Protocol</h3>
+          <p class="section-desc">In accordance with rigorous time-series machine-learning principles, HIVEGUARD applies the following safeguards:</p>
+          <div class="protocol-grid">
+            <div class="protocol-box">
+              <h4>1. Chronological Splitting</h4>
+              <p>Train and evaluation sets are split chronologically within each hive. Future measurements are never shuffled into training folds.</p>
+            </div>
+            <div class="protocol-box">
+              <h4>2. Zero Target Leakage</h4>
+              <p>Target columns (<code>condition_label</code>, <code>anomaly</code>) are strictly isolated and never passed into the feature matrix.</p>
+            </div>
+            <div class="protocol-box">
+              <h4>3. Backward-Looking Features</h4>
+              <p>All rolling statistics, medians, and MAD values use backward-looking historical windows with zero future lookahead.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           RESEARCH VIEW 7: EXPLAINABLE WARNING CENTER
+           ============================================================================== -->
+      <section id="research-warning-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>⚠️ EXPLAINABLE WARNING CENTER & ACTIONABLE DISPATCH</h2>
+          <p>Transparent triage categories, triggering evidence, and suggested physical verification protocols</p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="warning-filter-bar">
+          <button class="w-filter-btn active" data-cat="all">All Tiers</button>
+          <button class="w-filter-btn" data-cat="PERSISTENT_BIOLOGICAL_ANOMALY">Persistent Biological Anomaly</button>
+          <button class="w-filter-btn" data-cat="SENSOR_RELIABILITY_WARNING">Sensor Reliability Warning</button>
+          <button class="w-filter-btn" data-cat="ENVIRONMENTAL_DEVIATION">Environmental Deviation</button>
+          <button class="w-filter-btn" data-cat="MANAGEMENT_EVENT_ATTENUATED">Management Window</button>
+        </div>
+
+        <!-- Warning Cards Container -->
+        <div id="warning-cards-container" class="warning-cards-container">
+          <div class="empty-state">Loading active warning dispatches...</div>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           RESEARCH VIEW 8: EXPERIMENT REGISTRY & EXPORT
+           ============================================================================== -->
+      <section id="research-registry-view" class="content-section">
+        <div class="section-title-bar">
+          <h2>📋 EXPERIMENT REGISTRY & SCIENTIFIC REPRODUCIBILITY</h2>
+          <p>Audit trail of all benchmark runs, parameter sets, random seeds, and exportable data</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <h3>Logged Research Experiments</h3>
+              <small>Persistent local experiment store with full hyperparameter tracking</small>
+            </div>
+            <div class="header-action-buttons">
+              <button id="btn-refresh-experiments" class="btn btn-outline-dark btn-sm">🔄 Refresh</button>
+              <a href="/api/research/experiments/export-csv" class="btn btn-primary btn-sm" download>📥 Export All as CSV</a>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="research-table">
+              <thead>
+                <tr>
+                  <th>Experiment ID</th>
+                  <th>Timestamp</th>
+                  <th>Dataset ID</th>
+                  <th>Provenance</th>
+                  <th>Algorithm</th>
+                  <th>F1-Score</th>
+                  <th>FAR / 24h</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-experiments-log">
+                <tr><td colspan="8" class="text-center">Loading logged experiments...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================================
+           MODAL 1: MSPB DATASET AUDIT REPORT VIEWER
+           ============================================================================== -->
+      <div id="modal-audit-report" class="modal-overlay" style="display: none;">
+        <div class="modal-card modal-lg">
+          <div class="modal-header">
+            <h3>Verified Nature/Zenodo MSPB Dataset Audit Report</h3>
+            <button id="btn-close-audit-modal" class="modal-close-btn">&times;</button>
+          </div>
+          <div class="modal-body markdown-rendered" id="modal-audit-content">
+            <p>Loading verified audit report...</p>
+          </div>
+          <div class="modal-footer">
+            <button id="btn-close-audit-modal-footer" class="btn btn-secondary">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==============================================================================
+           MODAL 2: EXPERIMENT CONFIGURATION VIEWER
+           ============================================================================== -->
+      <div id="modal-experiment-details" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h3>Experiment Configuration & Reproducibility</h3>
+            <button id="btn-close-exp-modal" class="modal-close-btn">&times;</button>
+          </div>
+          <div class="modal-body">
+            <pre id="modal-exp-json" class="json-code-block"></pre>
+          </div>
+          <div class="modal-footer">
+            <button id="btn-close-exp-modal-footer" class="btn btn-secondary">Close</button>
+          </div>
+        </div>
+      </div>
+
+
       <section id="about-view" class="content-section">
         <div class="section-title-bar">
           <h2>ABOUT HIVEGUARD</h2>

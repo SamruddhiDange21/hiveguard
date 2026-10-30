@@ -1,0 +1,9 @@
+{
+  "runs": 20,
+  "mean_far_method_a": 58.62,
+  "mean_far_method_c": 0.79,
+  "mean_far_reduction_pct": 98.66,
+  "std_far_reduction_pct": 0.15,
+  "min_far_reduction_pct": 98.04,
+  "max_far_reduction_pct": 98.69
+}

@@ -34,3 +34,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Large raw datasets (> 100 MB, excluded from git)
+data/raw/
+data/uploads/
+

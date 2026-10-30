@@ -1,0 +1,46 @@
+hive_num,apiary,mortality_cause,nectar_hive_id,weight_nov_kg,weight_apr_kg,status_april_spring,hive_id,survived_winter
+4,Dubuc,,2056,36.8,29.2,,MSPB_2056,False
+20,Côté,,2131,40.4,30.0,,MSPB_2131,False
+31,Côté,,2040,37.4,27.2,,MSPB_2040,False
+37,Dubuc,Queen failure,2048,37.0,29.8,,MSPB_2048,False
+43,Dubuc,,2064,35.8,27.0,,MSPB_2064,False
+55,Côté,,2049,39.0,29.2,,MSPB_2049,False
+100,Côté,,2114,36.4,24.6,,MSPB_2114,False
+106,Dubuc,,2203,43.6,32.2,,MSPB_2203,False
+123,Côté,,2045,39.8,31.6,,MSPB_2045,False
+127,Dubuc,,2062,37.4,28.0,,MSPB_2062,False
+140,Dubuc,,2216,37.8,28.6,,MSPB_2216,False
+142,Dubuc,,2215,40.4,31.6,,MSPB_2215,False
+144,Dubuc,Dead queen,2214,41.4,32.6,,MSPB_2214,False
+151,Dubuc,Dead queen,2052,37.4,24.4,,MSPB_2052,False
+175,Dubuc,,2043,39.2,28.4,,MSPB_2043,False
+179,Côté,,2067,37.4,25.6,,MSPB_2067,False
+182,Côté,,2039,36.8,27.6,,MSPB_2039,False
+183,Côté,,2212,38.0,30.2,,MSPB_2212,False
+194,Côté,,2051,38.0,28.6,,MSPB_2051,False
+196,Côté,,2211,38.6,28.4,,MSPB_2211,False
+205,Dubuc,,2053,37.4,28.4,,MSPB_2053,False
+215,Dubuc,Queen failure,2072,39.6,27.4,,MSPB_2072,False
+252,Côté,,2196,37.8,29.0,,MSPB_2196,False
+253,Côté,,2130,36.2,27.4,,MSPB_2130,False
+261,Côté,,2132,36.2,27.0,,MSPB_2132,False
+284,Dubuc,,2074,41.2,32.4,,MSPB_2074,False
+303,Côté,Dead queen,2068,36.0,29.4,,MSPB_2068,False
+308,Côté,Queen failure,2070,37.0,22.0,,MSPB_2070,False
+311,Dubuc,,2111,35.0,24.6,,MSPB_2111,False
+313,Côté,,2124,37.2,27.2,,MSPB_2124,False
+340,Dubuc,,2055,41.2,26.0,,MSPB_2055,False
+406,Côté,,2066,37.4,28.4,,MSPB_2066,False
+410,Dubuc,,2110,42.2,31.4,,MSPB_2110,False
+422,Côté,,2204,34.2,23.2,,MSPB_2204,False
+430,Côté,Starved,2065,35.2,18.8,dead,MSPB_2065,False
+432,Côté,,2129,40.6,29.8,,MSPB_2129,False
+456,Côté,Dead queen,2050,37.6,24.6,,MSPB_2050,False
+470,Dubuc,,2123,41.6,33.4,,MSPB_2123,False
+489,Côté,,2069,37.4,29.0,,MSPB_2069,False
+504,Dubuc,,2060,35.6,28.0,,MSPB_2060,False
+576,Dubuc,Queen failure,2128,40.8,18.8,,MSPB_2128,False
+587,Dubuc,,2073,41.6,34.2,,MSPB_2073,False
+604,Dubuc,,2071,38.6,27.8,,MSPB_2071,False
+636,Dubuc,Queen failure,2061,35.2,27.4,,MSPB_2061,False
+637,Dubuc,,2109,41.8,33.4,,MSPB_2109,False

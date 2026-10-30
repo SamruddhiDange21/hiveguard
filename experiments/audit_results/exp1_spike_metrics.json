@@ -1,0 +1,125 @@
+{
+  "scenario": "Experiment 1: Isolated Hardware Spike (+15\u00b0C, 1 step)",
+  "dataset": "MSPB_HIVE_2046 (first 400 obs)",
+  "config": {
+    "scenario_category": "sensor_fault",
+    "scenario_type": "isolated_spike",
+    "channel": "temperature_C",
+    "start_index": 150,
+    "duration_steps": 1,
+    "severity": 15.0,
+    "random_seed": 42,
+    "total_timesteps": 400,
+    "fault_timesteps": 1,
+    "description": "Controlled isolated_spike fault injected on 'temperature_C' from step 150 to 151 (severity: 15.0)."
+  },
+  "method_a": {
+    "confusion_matrix": {
+      "tn": 171,
+      "fp": 228,
+      "fn": 0,
+      "tp": 1
+    },
+    "cm_matrix": [
+      [
+        171,
+        228
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "positive_class": {
+      "precision": 0.0044,
+      "recall": 1.0,
+      "f1_score": 0.0087
+    },
+    "negative_class": {
+      "precision": 1.0,
+      "recall": 0.4286,
+      "f1_score": 0.6
+    },
+    "macro_f1": 0.3043,
+    "weighted_f1": 0.5985,
+    "far_per_24h": 54.72,
+    "detection_delay_steps": 0.0,
+    "detection_delay_minutes": 0.0,
+    "total_samples": 400,
+    "total_days": 4.167,
+    "runtime_ms": 0.28
+  },
+  "method_b": {
+    "confusion_matrix": {
+      "tn": 336,
+      "fp": 63,
+      "fn": 0,
+      "tp": 1
+    },
+    "cm_matrix": [
+      [
+        336,
+        63
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "positive_class": {
+      "precision": 0.0156,
+      "recall": 1.0,
+      "f1_score": 0.0308
+    },
+    "negative_class": {
+      "precision": 1.0,
+      "recall": 0.8421,
+      "f1_score": 0.9143
+    },
+    "macro_f1": 0.4725,
+    "weighted_f1": 0.9121,
+    "far_per_24h": 15.12,
+    "detection_delay_steps": 0.0,
+    "detection_delay_minutes": 0.0,
+    "total_samples": 400,
+    "total_days": 4.167,
+    "runtime_ms": 88.53
+  },
+  "method_c_hardware_detection": {
+    "confusion_matrix": {
+      "tn": 395,
+      "fp": 4,
+      "fn": 0,
+      "tp": 1
+    },
+    "cm_matrix": [
+      [
+        395,
+        4
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "positive_class": {
+      "precision": 0.2,
+      "recall": 1.0,
+      "f1_score": 0.3333
+    },
+    "negative_class": {
+      "precision": 1.0,
+      "recall": 0.99,
+      "f1_score": 0.995
+    },
+    "macro_f1": 0.6641,
+    "weighted_f1": 0.9933,
+    "far_per_24h": 0.96,
+    "detection_delay_steps": 0.0,
+    "detection_delay_minutes": 0.0,
+    "total_samples": 400,
+    "total_days": 4.167,
+    "runtime_ms": 96.27
+  },
+  "method_c_biological_alarms": 52
+}
